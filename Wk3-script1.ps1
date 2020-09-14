@@ -13,9 +13,9 @@ if($param1 -and $param2) {
 
     #compare the versions
     
-    if($currentVersion -lt $webVersion) { Write-Host "Your version of this program is out of date. (you have "$currentVersion " and the online version is "$webVersion".)" }
-    if($currentVersion -ge $webVersion) { Write-Host "Your version of this program is up to date. (you have "$currentVersion " and the online version is "$webVersion".)" }
-
+    if($currentVersion -lt $webVersion) { Write-Host "Your version of this program is out of date. (you have "$currentVersion " and the online version is "$webVersion.content.Trim()".)" }
+    if($currentVersion -ge $webVersion) { Write-Host "Your version of this program is up to date. (you have "$currentVersion " and the online version is "$webVersion.content.Trim()".)" }
+    #it may seem pointless, but the trim removes the new line character that github won't let me remove. interestingly enough, comparing it to the file using the -lt and -ge operators gives no issues
 
 }
 #missing argument handling
@@ -26,4 +26,4 @@ elseif(-not $param1) {Write-Host "No File specified. Syntax: <version file> <ver
 #elseif(-not $param2) {Write-Host "No Url specified. Syntax: <version file> <version url>"}
 else {Write-Host "No File or Url specified. Syntax: <version file> <version url>"}
 
-
+#If i ever have to update this for future assignments, i'm going to use Json instead of plain text.
