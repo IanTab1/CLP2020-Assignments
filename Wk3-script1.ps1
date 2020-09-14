@@ -8,8 +8,8 @@ if($param1 -and $param2) {
     $currentVersion = Get-Content $param1
     Write-Host $currentversion
     #reads the version file from the internet (should be equal to or greater than the current version file)
-    $webVersion = Invoke-WebRequest -Uri $param2
-    Write-Host $webVersion.content
+    $webVersion = Invoke-WebRequest -Uri $param2 | Get-Content -Filter content
+    Write-Host $webVersion
 
     #compare the versions
     
